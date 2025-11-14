@@ -1,15 +1,17 @@
 name: Shell commands
 on: [push]
+
 jobs:
   run-shell-command:
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: ubuntu-latest
+        os: [ubuntu-latest, ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: echo a string
+      - name: Echo a string
         run: echo "Hello world"
-      - name: multiline script
+
+      - name: Multiline script
         run: |
           python3 -V
           touch my_file_with_workflow.py
